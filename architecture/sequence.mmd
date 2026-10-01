@@ -1,0 +1,53 @@
+%%{init: {
+  "theme": "base",
+  "sequence": {
+    "useMaxWidth": false,
+    "diagramMarginX": 20,
+    "diagramMarginY": 10
+  },
+  "themeVariables": {
+    "background": "#f8fafc",
+    "primaryColor": "#ffffff",
+    "primaryTextColor": "#0e1625",
+    "primaryBorderColor": "#ff6b00",
+    "lineColor": "#0080a8",
+    "secondaryColor": "#ffffff",
+    "secondaryTextColor": "#0e1625",
+    "tertiaryColor": "#fff7f0",
+    "tertiaryTextColor": "#0b1221",
+    "actorBkg": "#ffffff",
+    "actorBorder": "#ff6b00",
+    "actorTextColor": "#0b1221",
+    "actorLineColor": "#0080a8",
+    "signalColor": "#0080a8",
+    "signalTextColor": "#0b1221",
+    "labelBoxBkgColor": "#ffffff",
+    "labelBoxBorderColor": "#00c2ff",
+    "labelTextColor": "#0b1221",
+    "activationBkgColor": "#fff7f0",
+    "activationBorderColor": "#a84700"
+  },
+  "themeCSS": ".messageText,.labelText,.actor,.actor-line,.loopText,.noteText,text,tspan{fill:#0b1221!important;color:#0b1221!important;} .actor,.actor-top,.actor-bottom,.labelBox,.note,.note rect,.loopLine rect,.activation0,.activation1,.activation2{fill:#ffffff!important;stroke:#ff6b00!important;} .activation0,.activation1,.activation2{fill:#fff7f0!important;stroke:#a84700!important;}"
+}}%%
+sequenceDiagram
+  participant App as Uno-App
+  participant Core as SLM-Core
+  participant Hive as Hive
+  participant Peer as P2P-Peer
+  App->>Core: 1. Feedback / Korrektur / neue Information (mit Stufe)
+  Core->>Core: 2. Leerlauf-Training (maskiert: W_logik / W_PI)
+  Core->>Core: 3. Falten je Stufe (Clipping, Kompression, DP)
+  alt Offen / Vertraulich
+    Core->>Hive: 4a. Delta einreichen (signiert)
+  else Streng geheim
+    Core->>Hive: 4b. Strukturmeldung (gebündelt, mit App-ID)
+  else Nur lokal
+    Core->>Core: 4c. nichts senden (0 Byte)
+  end
+  Hive->>Hive: 5. Stufenprüfung + Trust T(a)
+  Hive->>Hive: 6. Weben, Unterteilen, Null-Slots ab k_min
+  Hive->>Hive: 7. Eval-Gate, Release signieren (TUF)
+  Core->>Hive: 8. Update-Request (Versionsstand)
+  Hive-->>Core: 9. Delta-Paket (geänderte Slots)
+  Core->>Core: 10. Signatur prüfen, anwenden (Prüf-Gate für Streng-geheim-Slots)
+  Core-->>Peer: 11. Delta-Paket weitergeben (libp2p)

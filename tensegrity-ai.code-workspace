@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{ "name": "docs", "path": "." },
+		{ "name": "proto", "path": "../proto_restatify-tensegrity-ai" },
+		{ "name": "core", "path": "../core_restatify-tensegrity-ai-slm" },
+		{ "name": "hive", "path": "../api_restatify-tensegrity-ai-hive" },
+		{ "name": "cloud", "path": "../api_restatify-tensegrity-ai-cloud" },
+		{ "name": "app", "path": "../app_restatify-tensegrity-ai" }
+	],
+	"settings": {
+		"files.encoding": "utf8",
+		"files.eol": "\n"
+	}
+}

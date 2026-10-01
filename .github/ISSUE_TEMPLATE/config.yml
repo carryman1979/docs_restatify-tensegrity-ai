@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Sicherheitslücke melden
+    url: https://github.com/carryman1979/docs_restatify-tensegrity-ai/security/advisories/new
+    about: Bitte vertraulich über GitHub Private Vulnerability Reporting.

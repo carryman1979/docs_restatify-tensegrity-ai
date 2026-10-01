@@ -1,0 +1,60 @@
+%%{init: {
+  "theme": "base",
+  "flowchart": {
+    "useMaxWidth": false,
+    "htmlLabels": false,
+    "diagramPadding": 4,
+    "nodeSpacing": 26,
+    "rankSpacing": 30
+  },
+  "themeVariables": {
+    "background": "#f8fafc",
+    "primaryColor": "#ffffff",
+    "primaryTextColor": "#0b1221",
+    "primaryBorderColor": "#ff6b00",
+    "lineColor": "#0080a8",
+    "tertiaryColor": "#ffffff"
+  },
+  "themeCSS": ".nodeLabel,.edgeLabel,.label,.cluster-label text,span{fill:#0b1221!important;color:#0b1221!important;}"
+}}%%
+graph TD
+  subgraph Edge["Edge-Gerät (Win/macOS/Linux/Android/iOS)"]
+    UI["Uno-App"] -->|FFI in-process| CORE["SLM-Core (Rust)"]
+    CORE --> MODEL["llama.cpp GGUF: W_basis + LoRA"]
+    CORE --> LEARN["Leerlauf-Training W_logik / W_PI"]
+    CORE --> FOLD["Falten je Stufe"]
+    CORE --> VAULT["Lokaler Speicher (verschlüsselt)"]
+    CORE --> P2P["libp2p"]
+  end
+
+  subgraph Hive["Tensegrity AI Hive (Python)"]
+    INGEST["Annahme + Stufenprüfung"] --> WEAVE["Weben: FedAvg x T(a)"]
+    TRUST["Trust / Blacklist"] --> WEAVE
+    WEAVE --> SPLIT["Unterteilen in Experten"]
+    REG["Slot-Registry"] --> SPLIT
+    SPLIT --> GATE["Eval-Gate"]
+    GATE --> REL["Release signieren (TUF)"]
+  end
+
+  subgraph Cloud["Cloud-Backend (Kubernetes)"]
+    GW["ASP.NET Core Gateway: gRPC-Web + OIDC"] --> ROUTER["Router"]
+    ROUTER --> GEN["Generalist-SLM"]
+    ROUTER --> EXP["Experten (vLLM Multi-LoRA)"]
+  end
+
+  WASM["Uno-App WebAssembly"] -->|gRPC-Web| GW
+  FOLD -->|gefaltete Deltas / Strukturmeldung| INGEST
+  REL -->|signierte Releases| CORE
+  REL -->|Adapter| EXP
+  P2P <-->|Delta-Pakete| PEER["andere Geräte"]
+  REL -->|Datenträger / Upstream| CLONE["Hive-Klon (Intranet/Land)"]
+
+  classDef primary fill:#ffffff,stroke:#ff6b00,color:#0b1221;
+  classDef secondary fill:#ffffff,stroke:#00c2ff,color:#0b1221;
+  classDef neutral fill:#f8fafc,stroke:#0080a8,color:#0b1221;
+  classDef accent fill:#fff7f0,stroke:#a84700,color:#0b1221;
+
+  class INGEST,WEAVE,SPLIT,GATE,REL,TRUST,REG primary;
+  class UI,CORE,MODEL,LEARN,P2P,VAULT secondary;
+  class GW,ROUTER,GEN,EXP,WASM neutral;
+  class FOLD,CLONE,PEER accent;

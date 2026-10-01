@@ -1,0 +1,8 @@
+.DS_Store
+Thumbs.db
+*.tmp
+~$*
+# Quellmaterial mit vertraulichen Daten nie einchecken
+_extracted/
+*.pdf
+*.docx
