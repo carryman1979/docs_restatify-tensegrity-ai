@@ -35,4 +35,10 @@ Diese Matrix bleibt Pflichtenheft- und Blueprint-konform; jede neue Implementier
 - Die Tests belegen die Ablehnung unbekannter Slots und die stabile Reihenfolge der ausgewählten Experten.
 - Integrationstests prüfen die Kombination aus Policy, Slot-Registry und Routing gegen den HTTP-Endpunkt.
 
+## Contract-Alignment und Proto-Drift
+
+- Die Protobuf-Contracts sind die Single Source of Truth für alle Stacks.
+- Der Test `test_contract_alignment.py` prüft, dass die Proto-Feldnamen mit den tatsächlichen JSON-Keys der Konsumenten übereinstimmen.
+- Änderungen an Contracts erfordern sofortige Aktualisierung der Konsumenten und der Traceability.
+
 Pflege mit dem Skill `traceability`. Eine Anforderung gilt erst als erfüllt, wenn alle zugeordneten Tests grün sind.
