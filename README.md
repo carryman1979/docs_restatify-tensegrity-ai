@@ -9,6 +9,8 @@ Models, vier Vertraulichkeitsstufen und einem Hive, der Lern-Deltas vertrauensge
 |---|---|
 | Whitepaper V1.0.26 | [whitepaper/](whitepaper/tensegrity-ai-whitepaper-v1.0.26.md) |
 | Ökosystem und Diagramme | [architecture/](architecture/oekosystem.md) |
+| Komponenten- und Architektur-Design | [architecture/komponentendesign.md](architecture/komponentendesign.md) |
+| MVP-Blueprint Phase 2 | [architecture/mvp-blueprint.md](architecture/mvp-blueprint.md) |
 | Architekturentscheidungen | [adr/](adr/README.md) |
 | Anforderungen (V-Modell links) | [requirements/](requirements/README.md) |
 | Teststrategie (V-Modell rechts) | [testing/](testing/teststrategie.md) |
@@ -16,6 +18,8 @@ Models, vier Vertraulichkeitsstufen und einem Hive, der Lern-Deltas vertrauensge
 | Roadmap und Phasen | [roadmap.md](roadmap.md) |
 | Zukunfts-Backlog | [backlog/](backlog/backlog.md) |
 | Glossar | [glossar.md](glossar.md) |
+| Qualitätsagenten und Pre-PR-Check | [.github/agents/](.github/agents/) und [.github/prompts/pre-pr-check.prompt.md](.github/prompts/pre-pr-check.prompt.md) |
+| Cloud-Routing mit Slot-Registry | [api_restatify-tensegrity-ai-cloud](https://github.com/carryman1979/api_restatify-tensegrity-ai-cloud) |
 
 ## Repositories
 

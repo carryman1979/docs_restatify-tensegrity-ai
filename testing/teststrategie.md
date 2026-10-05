@@ -19,5 +19,5 @@
 
 ## Namenskonvention
 
-Testnamen verweisen auf die Anforderung, z. B. `req_sys_012_nur_lokal_sendet_nichts`. Die Traceability-Matrix wird
+Testnamen verweisen auf die Anforderung, z. B. `req_sys_012_audit_log_for_blocked_submission`. Die Traceability-Matrix wird
 daraus generiert.

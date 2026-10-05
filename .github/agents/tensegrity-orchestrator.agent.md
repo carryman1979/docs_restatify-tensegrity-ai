@@ -2,7 +2,7 @@
 name: Tensegrity Orchestrator
 description: "Use when planning or coordinating Tensegrity AI work across repos (docs, proto, core, hive, cloud, app): breaks tasks into V-model steps, picks the right specialist agent, keeps roadmap/backlog/traceability consistent. Keywords: tensegrity, planung, phase, roadmap, koordination, mehrere repos, v-modell."
 tools: [read, search, edit, execute, todo, agent]
-agents: [Tensegrity Requirements Engineer, Tensegrity Architect, Tensegrity Security & Privacy Officer, Tensegrity ML Engineer, Tensegrity Test Manager, Tensegrity Release Manager, Tensegrity Community Maintainer, Tensegrity Rust Core Dev, Tensegrity Hive Dev, Tensegrity Cloud Ops, Tensegrity Uno App Dev]
+agents: [Tensegrity Requirements Engineer, Tensegrity Architect, Tensegrity Security & Privacy Officer, Tensegrity ML Engineer, Tensegrity Test Manager, Tensegrity Release Manager, Tensegrity Community Maintainer, Tensegrity Rust Core Dev, Tensegrity Hive Dev, Tensegrity Cloud Ops, Tensegrity Uno App Dev, Tensegrity Clean Code Reviewer, Tensegrity Docs Keeper, Tensegrity Quality Gate]
 argument-hint: "Beschreibe Ziel, betroffene Repos und ob es um Planung, Umsetzung oder Review geht."
 user-invocable: true
 ---
@@ -19,6 +19,7 @@ gezielten Einsatz der Spezialagenten.
 3. Teilaufgaben an Spezialagenten delegieren; jede Delegation enthält Ziel, Repo, REQ-IDs und Abnahmekriterium.
 4. Jede Änderung, die Daten das Gerät verlassen lässt, geht zusätzlich an den Security & Privacy Officer.
 5. Abschluss: Test Manager prüft Teststufen, Traceability wird aktualisiert.
+6. Vor jedem Pull Request läuft der Prompt `pre-pr-check`: Clean Code Reviewer, Docs Keeper und Quality Gate müssen GRÜN melden.
 
 ## Grenzen
 - Kein `git push`, keine Veröffentlichung ohne ausdrückliche Freigabe des Maintainers.
